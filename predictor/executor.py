@@ -11,6 +11,7 @@ import os
 import cv2
 
 
+
 app = Flask(__name__)
 api = Api(app)
 
@@ -74,11 +75,12 @@ class APIOutput(Resource):
         url = request.args.get('camurl')
         print "url :" + str(url)
         coordinates = request.args.get('coord')
-        print "coord :"+coord
+        print "coord :"+coordinates
         imagePath = storage+str(url)+"/"+"park_side4.jpg"
+        imageURLFile = storage+str(url)+"/"+"images.txt"
         image = cv2.imread(imagePath,1)
         print "aaa"
-        Crop.cropper(coordinates,image)
+        Crop.cropper(coordinates,image,imageURLFile)
         print "bbb"
 
 

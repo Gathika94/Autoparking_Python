@@ -1,0 +1,3 @@
+/media/gathika/MainDisk/entgra_repos/asas/autoparking/images/camera1_slots/slot1.png
+/media/gathika/MainDisk/entgra_repos/asas/autoparking/images/camera1_slots/slot2.png
+/media/gathika/MainDisk/entgra_repos/asas/autoparking/images/camera1_slots/slot3.png

@@ -9,11 +9,15 @@ from sqlalchemy import create_engine
 import subprocess
 import os
 import cv2
-
+import ast
 
 
 app = Flask(__name__)
 api = Api(app)
+
+deployFileLocation ="/media/gathika/MainDisk/entgra_repos/deep-parking/mAlexNet-on-Combined_CNRParkAB_Ext_train-val-PKLot_val/deploy.prototxt"
+modelLocation ="/media/gathika/MainDisk/entgra_repos/deep-parking/mAlexNet-on-Combined_CNRParkAB_Ext_train-val-PKLot_val/snapshot_iter_6275.caffemodel"
+
 
 def methodRunner():
     out = forward.forward_all(
@@ -37,8 +41,8 @@ def methodRunner():
     return output
 
 
-def scriptRunner():
-    cmd = 'python forward.py /media/gathika/MainDisk/entgra_repos/deep-parking/mAlexNet-on-Combined_CNRParkAB_Ext_train-val-PKLot_val/deploy.prototxt /media/gathika/MainDisk/entgra_repos/deep-parking/mAlexNet-on-Combined_CNRParkAB_Ext_train-val-PKLot_val/snapshot_iter_6275.caffemodel images.txt predictions.npy'
+def scriptRunner(imagesFileLocation, predictionFileLocation,numberOfSlots):
+    cmd = 'python forward.py'+' '+deployFileLocation+' '+ modelLocation+' '+ imagesFileLocation+' '+ predictionFileLocation
     #p = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)
     os.system(cmd)
     newArray = np.load("predictions.npy")
@@ -47,7 +51,7 @@ def scriptRunner():
     available = 0
     occupied  = 0
 
-    for x in range(0, 23, 1):
+    for x in range(0, numberOfSlots, 1):
         availability = (newArray[x, 0])
         if (availability < 4.0 * (10 ** (-24))):
             print ("slot" + str(x + 1) + ": " + str(0))
@@ -75,17 +79,20 @@ class APIOutput(Resource):
         url = request.args.get('camurl')
         print "url :" + str(url)
         coordinates = request.args.get('coord')
+        coordinatesList = ast.literal_eval(coordinates)
+        numberOfSlots = len(coordinatesList);
         print "coord :"+coordinates
         imagePath = storage+str(url)+"/"+"park_side4.jpg"
         imageURLFile = storage+str(url)+"/"+"images.txt"
+        predictionFile = storage+str(url)+"/"+"predictions.npy"
         image = cv2.imread(imagePath,1)
         print "aaa"
         Crop.cropper(coordinates,image,imageURLFile)
         print "bbb"
 
 
-        return {"Hello": "World"}
-        #return scriptRunner()
+        #return {"Hello": "World"}
+        return scriptRunner(imageURLFile,predictionFile,numberOfSlots)
 
 
 api.add_resource(APIOutput, '/output')

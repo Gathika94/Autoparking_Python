@@ -38,7 +38,7 @@ def cropper(coordinates, image, imageURLFilePath):
        # filePath = "/media/gathika/MainDisk/entgra_repos/AutoParking/images/cropped/park_cropped2.png"
         cv2.imwrite(str(filePath),croppedImg)
         if(needToWrite):
-            imageURLFile.write(filePath+"\r\n")
+            imageURLFile.write(filePath+"\n")
         #cv2.imwrite("/media/gathika/MainDisk/entgra_repos/AutoParking/images/cropped/park_cropped2.png",croppedImg)
         #cv2.imwrite("/media/gathika/MainDisk/entgra_repos/AutoParking/images/cropped/park_cropped3.png",cropped3)
 

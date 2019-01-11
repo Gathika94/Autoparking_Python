@@ -5,8 +5,6 @@ import numpy as np;
 from flask import Flask, request
 from flask_restful import Resource, Api
 import json
-from sqlalchemy import create_engine
-import subprocess
 import os
 import cv2
 import ast
@@ -15,15 +13,17 @@ import ast
 app = Flask(__name__)
 api = Api(app)
 
+storage = "/media/gathika/MainDisk/entgra_repos/asas/autoparking/images/"
 deployFileLocation ="/media/gathika/MainDisk/entgra_repos/deep-parking/mAlexNet-on-Combined_CNRParkAB_Ext_train-val-PKLot_val/deploy.prototxt"
 modelLocation ="/media/gathika/MainDisk/entgra_repos/deep-parking/mAlexNet-on-Combined_CNRParkAB_Ext_train-val-PKLot_val/snapshot_iter_6275.caffemodel"
 
 
-def methodRunner():
+#run machine learning model as a method
+def methodRunner(imagesFileLocation):
     out = forward.forward_all(
-        "/media/gathika/MainDisk/entgra_repos/deep-parking/mAlexNet-on-Combined_CNRParkAB_Ext_train-val-PKLot_val/deploy.prototxt",
-        "/media/gathika/MainDisk/entgra_repos/deep-parking/mAlexNet-on-Combined_CNRParkAB_Ext_train-val-PKLot_val/snapshot_iter_6275.caffemodel",
-        "images.txt")
+        deployFileLocation,
+        modelLocation,
+        imagesFileLocation)
     print ("received")
     np.save('predictions.npy', out)
     newArray = np.load("predictions.npy")
@@ -40,13 +40,12 @@ def methodRunner():
             output[0]["slot" + str(x + 1)] = 1
     return output
 
-
+#run machine learning model as a script
 def scriptRunner(imagesFileLocation, predictionFileLocation,numberOfSlots):
-    cmd = 'python forward.py'+' '+deployFileLocation+' '+ modelLocation+' '+ imagesFileLocation+' '+ predictionFileLocation
-    #p = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)
-    os.system(cmd)
-    newArray = np.load("predictions.npy")
 
+    cmd = 'python forward.py'+' '+deployFileLocation+' '+ modelLocation+' '+ imagesFileLocation+' '+ predictionFileLocation
+    os.system(cmd)
+    newArray = np.load(predictionFileLocation)
     output = {}
     available = 0
     occupied  = 0
@@ -71,31 +70,23 @@ def scriptRunner(imagesFileLocation, predictionFileLocation,numberOfSlots):
     
 
 
-
+#API
 class APIOutput(Resource):
     def get(self):
-        storage = "/media/gathika/MainDisk/entgra_repos/asas/autoparking/images/"
-        #coordinates = [[436, 592, 256, 476], [309, 420, 214, 475], [204, 279, 250, 484]]
         url = request.args.get('camurl')
-        print "url :" + str(url)
-        coordinates = request.args.get('coord')
+        coordinates = request.args.get('grid')
         coordinatesList = ast.literal_eval(coordinates)
         numberOfSlots = len(coordinatesList);
-        print "coord :"+coordinates
-        imagePath = storage+str(url)+"/"+"park_side4.jpg"
+        imagePath = storage+str(url)+"/"+"park_side.jpg"
         imageURLFile = storage+str(url)+"/"+"images.txt"
         predictionFile = storage+str(url)+"/"+"predictions.npy"
+        cropFolder = storage+str(url)+"/"+"slots"
         image = cv2.imread(imagePath,1)
-        print "aaa"
-        Crop.cropper(coordinates,image,imageURLFile)
-        print "bbb"
-
-
-        #return {"Hello": "World"}
+        Crop.cropper(coordinates,image,imageURLFile,cropFolder)
         return scriptRunner(imageURLFile,predictionFile,numberOfSlots)
 
 
-api.add_resource(APIOutput, '/output')
+api.add_resource(APIOutput, '/occupancy')
 
 
 

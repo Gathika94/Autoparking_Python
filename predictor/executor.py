@@ -1,7 +1,7 @@
 
 import forward
 import Crop
-import numpy as np;
+import numpy as np
 from flask import Flask, request
 from flask_restful import Resource, Api
 import json
@@ -77,13 +77,24 @@ class APIOutput(Resource):
         coordinates = request.args.get('grid')
         coordinatesList = ast.literal_eval(coordinates)
         numberOfSlots = len(coordinatesList);
-        imagePath = storage+str(url)+"/"+"park_side.jpg"
+        imagePath = storage+str(url)+"/images/"+"park_side.jpg"
+
+        search_dir = storage+str(url)+"/images/"
+        os.chdir(search_dir)
+        files = filter(os.path.isfile, os.listdir(search_dir))
+        files = [os.path.join(search_dir, f) for f in files]  # add path to each file
+        files.sort(key=os.path.getatime)
+        print files
+        imagePath = files[-1]
+        print imagePath
+
         imageURLFile = storage+str(url)+"/"+"images.txt"
         predictionFile = storage+str(url)+"/"+"predictions.npy"
         cropFolder = storage+str(url)+"/"+"slots"
         image = cv2.imread(imagePath,1)
         Crop.cropper(coordinates,image,imageURLFile,cropFolder)
-        return scriptRunner(imageURLFile,predictionFile,numberOfSlots)
+        #return scriptRunner(imageURLFile,predictionFile,numberOfSlots)
+        return {"a":"b"}
 
 
 api.add_resource(APIOutput, '/occupancy')

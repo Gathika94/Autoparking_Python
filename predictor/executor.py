@@ -77,8 +77,8 @@ class APIOutput(Resource):
         coordinates = request.args.get('grid')
         coordinatesList = ast.literal_eval(coordinates)
         numberOfSlots = len(coordinatesList);
-        imagePath = storage+str(url)+"/images/"+"park_side.jpg"
 
+        startingDir = os.getcwd()
         search_dir = storage+str(url)+"/images/"
         os.chdir(search_dir)
         files = filter(os.path.isfile, os.listdir(search_dir))
@@ -87,14 +87,14 @@ class APIOutput(Resource):
         print files
         imagePath = files[-1]
         print imagePath
-
+        os.chdir(startingDir)
         imageURLFile = storage+str(url)+"/"+"images.txt"
         predictionFile = storage+str(url)+"/"+"predictions.npy"
         cropFolder = storage+str(url)+"/"+"slots"
         image = cv2.imread(imagePath,1)
         Crop.cropper(coordinates,image,imageURLFile,cropFolder)
-        #return scriptRunner(imageURLFile,predictionFile,numberOfSlots)
-        return {"a":"b"}
+        return scriptRunner(imageURLFile,predictionFile,numberOfSlots)
+
 
 
 api.add_resource(APIOutput, '/occupancy')

@@ -1,6 +1,6 @@
 
 import forward
-import Crop
+import crop
 import numpy as np
 from flask import Flask, request
 from flask_restful import Resource, Api
@@ -73,26 +73,32 @@ def scriptRunner(imagesFileLocation, predictionFileLocation,numberOfSlots):
 #API
 class APIOutput(Resource):
     def get(self):
+        #extract data from api parameters
         url = request.args.get('camurl')
         coordinates = request.args.get('grid')
         coordinatesList = ast.literal_eval(coordinates)
         numberOfSlots = len(coordinatesList);
 
+        #directory and file paths
+        imageURLFile = storage + str(url) + "/" + "images.txt"
+        predictionFile = storage + str(url) + "/" + "predictions.npy"
+        cropFolder = storage + str(url) + "/" + "slots"
+
+        #sorting images of a particular camera based on access time
         startingDir = os.getcwd()
-        search_dir = storage+str(url)+"/images/"
-        os.chdir(search_dir)
-        files = filter(os.path.isfile, os.listdir(search_dir))
-        files = [os.path.join(search_dir, f) for f in files]  # add path to each file
+        searchDir = storage+str(url)+"/images/"
+        os.chdir(searchDir)
+        files = filter(os.path.isfile, os.listdir(searchDir))
+        files = [os.path.join(searchDir, f) for f in files]  # add path to each file
         files.sort(key=os.path.getatime)
-        print files
         imagePath = files[-1]
-        print imagePath
         os.chdir(startingDir)
-        imageURLFile = storage+str(url)+"/"+"images.txt"
-        predictionFile = storage+str(url)+"/"+"predictions.npy"
-        cropFolder = storage+str(url)+"/"+"slots"
+
+        #crop image
         image = cv2.imread(imagePath,1)
-        Crop.cropper(coordinates,image,imageURLFile,cropFolder)
+        crop.cropper(coordinates, image, imageURLFile, cropFolder)
+
+        #return occupance status
         return scriptRunner(imageURLFile,predictionFile,numberOfSlots)
 
 

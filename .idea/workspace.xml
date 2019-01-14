@@ -3,7 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="d663afa6-afcd-42e5-ab50-3203141747d6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/predictor/executor.py" beforeDir="false" afterPath="$PROJECT_DIR$/predictor/executor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crop.py" beforeDir="false" afterPath="$PROJECT_DIR$/Crop.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/camera1/images.txt" beforeDir="false" afterPath="$PROJECT_DIR$/images/camera1/images.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/camera1/images/park_side.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/camera1/images/park_side2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/camera1/images/park_side4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/camera1/predictions.npy" beforeDir="false" afterPath="$PROJECT_DIR$/images/camera1/predictions.npy" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -22,11 +27,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Crop.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="23" column="37" selection-start-line="23" selection-start-column="37" selection-end-line="23" selection-end-column="37" />
+            <state relative-caret-position="435">
+              <caret line="29" column="43" selection-start-line="29" selection-start-column="43" selection-end-line="29" selection-end-column="43" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -34,11 +39,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/predictor/executor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="484">
-              <caret line="96" lean-forward="true" selection-start-line="96" selection-end-line="96" />
+            <state relative-caret-position="-236">
+              <caret line="43" column="35" lean-forward="true" selection-start-line="43" selection-start-column="35" selection-end-line="43" selection-end-column="35" />
               <folding>
                 <element signature="e#1#15#0" expanded="true" />
               </folding>
@@ -49,7 +54,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/predictor/forward.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2820">
+            <state relative-caret-position="739">
               <caret line="201" selection-start-line="201" selection-end-line="201" />
             </state>
           </provider>
@@ -117,8 +122,8 @@
         <option value="$PROJECT_DIR$/numpyreader.py" />
         <option value="$PROJECT_DIR$/predictor/ml_model/executor.py" />
         <option value="$PROJECT_DIR$/predictor/forward.py" />
-        <option value="$PROJECT_DIR$/Crop.py" />
         <option value="$PROJECT_DIR$/predictor/executor.py" />
+        <option value="$PROJECT_DIR$/Crop.py" />
       </list>
     </option>
   </component>
@@ -270,23 +275,24 @@
       <workItem from="1547100330490" duration="30947000" />
       <workItem from="1547203273365" duration="1309000" />
       <workItem from="1547341148910" duration="6079000" />
-      <workItem from="1547375762891" duration="539000" />
+      <workItem from="1547375762891" duration="2497000" />
+      <workItem from="1547380085653" duration="2199000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="68778000" />
+    <option name="totallyTimeSpent" value="72935000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19922523" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20143884" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.26349893" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.7483801" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3898488" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -295,7 +301,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.70950323" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.11339093" />
       <window_info anchor="bottom" id="Python Console" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -314,23 +320,6 @@
     <entry file="file://$PROJECT_DIR$/park_side3.jpg" />
     <entry file="file://$PROJECT_DIR$/park_side.jpg" />
     <entry file="file://$PROJECT_DIR$/predictor/ml_model/executor.py" />
-    <entry file="file://$PROJECT_DIR$/Crop.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="23" column="37" selection-start-line="23" selection-start-column="37" selection-end-line="23" selection-end-column="37" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/predictor/forward.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2820">
-          <caret line="201" selection-start-line="201" selection-end-line="201" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/predictor/images.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -358,10 +347,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/predictor/executor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="96" lean-forward="true" selection-start-line="96" selection-end-line="96" />
+        <state relative-caret-position="-236">
+          <caret line="43" column="35" lean-forward="true" selection-start-line="43" selection-start-column="35" selection-end-line="43" selection-end-column="35" />
           <folding>
             <element signature="e#1#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/predictor/forward.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="739">
+          <caret line="201" selection-start-line="201" selection-end-line="201" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Crop.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="29" column="43" selection-start-line="29" selection-start-column="43" selection-end-line="29" selection-end-column="43" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
           </folding>
         </state>
       </provider>

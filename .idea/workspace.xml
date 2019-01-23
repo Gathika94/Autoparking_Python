@@ -3,20 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="d663afa6-afcd-42e5-ab50-3203141747d6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Crop.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/camera1/park_side.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/camera1/park_side5.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/camera1/park_side6.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/camera1/park_side7.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/images/camera1/predictions.npy" beforeDir="false" afterPath="$PROJECT_DIR$/images/camera1/predictions.npy" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/images/camera1/slots/slot1.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/camera1/slots/slot1.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/images/camera1/slots/slot2.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/camera1/slots/slot2.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/images/camera1/slots/slot3.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/camera1/slots/slot3.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/numpyreader.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/park_cropped.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/park_cropped1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/park_cropped2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/park_cropped3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/predictions.npy" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/predictor/Crop.py" beforeDir="false" afterPath="$PROJECT_DIR$/predictor/crop.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/predictor/executor.py" beforeDir="false" afterPath="$PROJECT_DIR$/predictor/executor.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,7 +22,7 @@
     <SUITE FILE_PATH="coverage/AutoParking$Crop.coverage" NAME="Crop Coverage Results" MODIFIED="1546597305660" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/project52$Crop.coverage" NAME="Crop Coverage Results" MODIFIED="1546582726676" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/project52$numpyreader.coverage" NAME="numpyreader Coverage Results" MODIFIED="1546583849640" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/autoparking$executor.coverage" NAME="executor Coverage Results" MODIFIED="1547447309476" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/predictor" />
+    <SUITE FILE_PATH="coverage/autoparking$executor.coverage" NAME="executor Coverage Results" MODIFIED="1548148258631" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/predictor" />
     <SUITE FILE_PATH="coverage/AutoParking$executor.coverage" NAME="executor Coverage Results" MODIFIED="1546837257055" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/predictor" />
     <SUITE FILE_PATH="coverage/autoparking$Crop.coverage" NAME="Crop Coverage Results" MODIFIED="1547116877662" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
@@ -39,8 +31,20 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/predictor/executor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-746">
-              <caret line="8" column="10" lean-forward="true" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
+            <state relative-caret-position="44">
+              <caret line="70" column="25" selection-start-line="70" selection-start-column="25" selection-end-line="70" selection-end-column="25" />
+              <folding>
+                <element signature="e#0#13#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/anaconda2/lib/python2.7/base64.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="750">
+              <caret line="53" selection-start-line="53" selection-end-line="53" />
             </state>
           </provider>
         </entry>
@@ -48,8 +52,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/predictor/crop.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" column="24" lean-forward="true" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
+            <state relative-caret-position="420">
+              <caret line="30" selection-start-line="30" selection-end-line="30" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -60,8 +64,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/predictor/forward.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2340">
-              <caret line="169" column="70" lean-forward="true" selection-start-line="169" selection-start-column="70" selection-end-line="169" selection-end-column="70" />
+            <state relative-caret-position="2445">
+              <caret line="176" column="32" selection-start-line="176" selection-start-column="32" selection-end-line="176" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -100,8 +104,8 @@
         <option value="$PROJECT_DIR$/predictor/ml_model/executor.py" />
         <option value="$PROJECT_DIR$/predictor/forward.py" />
         <option value="$PROJECT_DIR$/Crop.py" />
-        <option value="$PROJECT_DIR$/predictor/executor.py" />
         <option value="$PROJECT_DIR$/predictor/crop.py" />
+        <option value="$PROJECT_DIR$/predictor/executor.py" />
       </list>
     </option>
   </component>
@@ -256,21 +260,28 @@
       <workItem from="1547375762891" duration="2497000" />
       <workItem from="1547380085653" duration="2199000" />
       <workItem from="1547446283384" duration="2180000" />
+      <workItem from="1547458878650" duration="2913000" />
+      <workItem from="1547723464834" duration="4780000" />
+      <workItem from="1547792426875" duration="268000" />
+      <workItem from="1547795163258" duration="662000" />
+      <workItem from="1547874990000" duration="9891000" />
+      <workItem from="1548145383014" duration="344000" />
+      <workItem from="1548146762687" duration="1994000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="75115000" />
+    <option name="totallyTimeSpent" value="95967000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20365246" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.11178749" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.22354212" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.46436286" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3898488" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -298,36 +309,43 @@
     <entry file="file://$PROJECT_DIR$/park_side3.jpg" />
     <entry file="file://$PROJECT_DIR$/park_side.jpg" />
     <entry file="file://$PROJECT_DIR$/predictor/ml_model/executor.py" />
-    <entry file="file://$PROJECT_DIR$/Crop.py">
+    <entry file="file://$PROJECT_DIR$/Crop.py" />
+    <entry file="file://$PROJECT_DIR$/park_cropped3.png" />
+    <entry file="file://$PROJECT_DIR$/park_cropped1.png" />
+    <entry file="file://$PROJECT_DIR$/park_cropped.png" />
+    <entry file="file://$PROJECT_DIR$/park_cropped2.png" />
+    <entry file="file://$PROJECT_DIR$/numpyreader.py" />
+    <entry file="file://$PROJECT_DIR$/predictor/executor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="10" lean-forward="true" selection-start-column="10" selection-end-column="10" />
+        <state relative-caret-position="44">
+          <caret line="70" column="25" selection-start-line="70" selection-start-column="25" selection-end-line="70" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/park_cropped3.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/park_cropped1.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/park_cropped.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/park_cropped2.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/numpyreader.py">
+    <entry file="file://$USER_HOME$/anaconda2/lib/python2.7/base64.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        <state relative-caret-position="750">
+          <caret line="53" selection-start-line="53" selection-end-line="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/predictor/crop.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="30" selection-start-line="30" selection-end-line="30" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/predictor/forward.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2340">
-          <caret line="169" column="70" lean-forward="true" selection-start-line="169" selection-start-column="70" selection-end-line="169" selection-end-column="70" />
+        <state relative-caret-position="2445">
+          <caret line="176" column="32" selection-start-line="176" selection-start-column="32" selection-end-line="176" selection-end-column="32" />
         </state>
       </provider>
     </entry>
@@ -336,23 +354,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Empty Document">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/predictor/crop.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="24" lean-forward="true" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/predictor/executor.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-746">
-          <caret line="8" column="10" lean-forward="true" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
-        </state>
-      </provider>
     </entry>
   </component>
 </project>

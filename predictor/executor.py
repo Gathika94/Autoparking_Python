@@ -10,6 +10,7 @@ import os
 import cv2
 import ast
 
+
 app = Flask(__name__)
 api = Api(app)
 
@@ -67,8 +68,9 @@ def scriptRunner(imagesFileLocation, predictionFileLocation, numberOfSlots, imag
     output["available"] = available
     output["occupied"] = occupied
     output["image"] = image_as_text
-    jsonOutput = json.dumps(output)
-    return str(jsonOutput)
+    #jsonOutput = json.dumps(output)
+    #return str(jsonOutput)
+    return output
 
 
 @app.route('/occupancy',methods=['GET'])
@@ -104,16 +106,27 @@ def index():
     image_as_text = base64.b64encode(buffer)
 
     # return occupance status
-    return scriptRunner(imageURLFile, predictionFile, numberOfSlots, image_as_text)
+    output = scriptRunner(imageURLFile, predictionFile, numberOfSlots, image_as_text)
+    output["imagePath"]=imagePath
+    jsonOutput = json.dumps(output)
+    return str(jsonOutput)
 
-@app.route('/image/<camid>',methods=['GET'])
-def getImage(camid):
-    image = request.args.get('image')
+@app.route('/image',methods=['GET'])
+def getImage():
+    imagePath = request.args.get('path')
+    print "imagePath :"+imagePath
+   #imagePath = "/media/gathika/MainDisk/entgra_repos/asas/autoparking/images/1/images/park_side27.jpg"
+    image = cv2.imread(imagePath, 1);
+
+    resizedImage = cv2.resize(image, (400, 300))
+    cv2.imwrite("resized.jpg", resizedImage)
+    retval, buffer = cv2.imencode('.jpg', resizedImage)
+    image_as_text = base64.b64encode(buffer)
     output ={}
-    output["camid"]=camid
-    output["image"]=image
+    output["image"]=image_as_text
     jsonOutput = json.dumps(output)
     return jsonOutput
+
 
 @app.route('/location/<locationid>',methods=['GET'])
 def getLocationDetails(locationid):
@@ -128,6 +141,7 @@ def getLocationDetails(locationid):
     predictionFile = storage + str(url) + "/" + "predictions.npy"
     cropFolder = storage + str(url) + "/" + "slots"
 
+
     # sorting images of a particular camera based on access time
     startingDir = os.getcwd()
     searchDir = storage + str(url) + "/images/"
@@ -139,12 +153,15 @@ def getLocationDetails(locationid):
     os.chdir(startingDir)
 
     # crop image
-    image = cv2.imread(imagePath, 1);
-    crop.cropper(coordinates, image, imageURLFile, cropFolder);
+    image = cv2.imread(imagePath, 1)
+    crop.cropper(coordinates, image, imageURLFile, cropFolder)
   
 
     # return occupance status
-    return scriptRunner(imageURLFile, predictionFile, numberOfSlots, imagePath)
+    output= scriptRunner(imageURLFile, predictionFile, numberOfSlots, imagePath)
+    output["imagePath"] = imagePath #have to remove this
+    jsonOutput = json.dumps(output)
+    return jsonOutput
 
 
 

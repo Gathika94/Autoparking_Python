@@ -9,7 +9,8 @@ import json
 import os
 import cv2
 import ast
-
+import stat
+import time
 
 app = Flask(__name__)
 api = Api(app)
@@ -68,8 +69,6 @@ def scriptRunner(imagesFileLocation, predictionFileLocation, numberOfSlots, imag
     output["available"] = available
     output["occupied"] = occupied
     output["image"] = image_as_text
-    #jsonOutput = json.dumps(output)
-    #return str(jsonOutput)
     return output
 
 
@@ -96,6 +95,10 @@ def index():
     imagePath = files[-1]
     os.chdir(startingDir)
 
+    #metaData
+    imageMetaData = os.stat(imagePath)
+    imageCreationTime = time.ctime ( imageMetaData [ stat.ST_ATIME ] ); #need to fix - last access time for now
+
     # crop image
     image = cv2.imread(imagePath, 1);
     crop.cropper(coordinates, image, imageURLFile, cropFolder);
@@ -107,7 +110,8 @@ def index():
 
     # return occupance status
     output = scriptRunner(imageURLFile, predictionFile, numberOfSlots, image_as_text)
-    output["imagePath"]=imagePath
+    output["imagePath"]= imagePath
+    output["accessedTime"]= imageCreationTime
     jsonOutput = json.dumps(output)
     return str(jsonOutput)
 
@@ -115,9 +119,7 @@ def index():
 def getImage():
     imagePath = request.args.get('path')
     print "imagePath :"+imagePath
-   #imagePath = "/media/gathika/MainDisk/entgra_repos/asas/autoparking/images/1/images/park_side27.jpg"
     image = cv2.imread(imagePath, 1);
-
     resizedImage = cv2.resize(image, (400, 300))
     cv2.imwrite("resized.jpg", resizedImage)
     retval, buffer = cv2.imencode('.jpg', resizedImage)
@@ -155,11 +157,15 @@ def getLocationDetails(locationid):
     # crop image
     image = cv2.imread(imagePath, 1)
     crop.cropper(coordinates, image, imageURLFile, cropFolder)
-  
+
+    # metaData
+    imageMetaData = os.stat(imagePath)
+    imageCreationTime = time.ctime(imageMetaData[stat.ST_ATIME]);  # need to fix - last access time for
 
     # return occupance status
     output= scriptRunner(imageURLFile, predictionFile, numberOfSlots, imagePath)
     output["imagePath"] = imagePath #have to remove this
+    output["accessedTime"] = imageCreationTime
     jsonOutput = json.dumps(output)
     return jsonOutput
 

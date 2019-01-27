@@ -11,6 +11,8 @@ import cv2
 import ast
 import stat
 import time
+import datetime
+import pathlib2
 
 app = Flask(__name__)
 api = Api(app)
@@ -50,6 +52,7 @@ def scriptRunner(imagesFileLocation, predictionFileLocation, numberOfSlots, imag
     os.system(cmd)
     newArray = np.load(predictionFileLocation)
     output = {}
+    slots = {}
     available = 0
     occupied = 0
 
@@ -57,19 +60,40 @@ def scriptRunner(imagesFileLocation, predictionFileLocation, numberOfSlots, imag
         availability = (newArray[x, 0])
         if (availability < 4.0 * (10 ** (-24))):
             print ("slot" + str(x + 1) + ": " + str(0))
-            output["slot" + str(x + 1)] = 0
+           # output["slot" + str(x + 1)] = 0
+            slots["slot" + str(x + 1)] = 0
             print ("availability : " + str(availability))
             occupied = occupied + 1
         else:
             print ("slot" + str(x + 1) + ": " + str(1))
-            output["slot" + str(x + 1)] = 1
+            #output["slot" + str(x + 1)] = 1
+            slots["slot" + str(x + 1)] = 1
             print ("availability : " + str(availability))
             available = available + 1
 
     output["available"] = available
     output["occupied"] = occupied
+    output["slots"] = slots
     output["image"] = image_as_text
     return output
+
+def getImageCreatedTime(imagePath):
+
+    image = pathlib2.Path(imagePath);
+    imageAccessTime = datetime.datetime.fromtimestamp(image.stat().st_atime);  # need to fix - last access time for now
+    year = imageAccessTime.year
+    month = imageAccessTime.month
+    day = imageAccessTime.day
+    hour = imageAccessTime.hour
+    minute = imageAccessTime.minute
+    createdTime={}
+    createdTime["year"] = year
+    createdTime["month"] = month
+    createdTime["day"] = day
+    createdTime["hour"] = hour
+    createdTime["minute"] = minute
+    return createdTime
+
 
 
 @app.route('/occupancy',methods=['GET'])
@@ -95,9 +119,8 @@ def index():
     imagePath = files[-1]
     os.chdir(startingDir)
 
-    #metaData
-    imageMetaData = os.stat(imagePath)
-    imageCreationTime = time.ctime ( imageMetaData [ stat.ST_ATIME ] ); #need to fix - last access time for now
+    #get created time using metaData
+    createdTime = getImageCreatedTime(imagePath);
 
     # crop image
     image = cv2.imread(imagePath, 1);
@@ -111,7 +134,7 @@ def index():
     # return occupance status
     output = scriptRunner(imageURLFile, predictionFile, numberOfSlots, image_as_text)
     output["imagePath"]= imagePath
-    output["accessedTime"]= imageCreationTime
+    output["accessedTime"] = createdTime
     jsonOutput = json.dumps(output)
     return str(jsonOutput)
 
@@ -136,7 +159,7 @@ def getLocationDetails(locationid):
     url = locationid
     coordinates = request.args.get('grid')
     coordinatesList = ast.literal_eval(coordinates)
-    numberOfSlots = len(coordinatesList);
+    numberOfSlots = len(coordinatesList)
 
     # directory and file paths
     imageURLFile = storage + str(url) + "/" + "images.txt"
@@ -164,7 +187,7 @@ def getLocationDetails(locationid):
 
     # return occupance status
     output= scriptRunner(imageURLFile, predictionFile, numberOfSlots, imagePath)
-    output["imagePath"] = imagePath #have to remove this
+    #output["imagePath"] = imagePath #have to remove this
     output["accessedTime"] = imageCreationTime
     jsonOutput = json.dumps(output)
     return jsonOutput

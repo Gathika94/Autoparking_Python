@@ -80,19 +80,19 @@ def scriptRunner(imagesFileLocation, predictionFileLocation, numberOfSlots, imag
 def getImageCreatedTime(imagePath):
 
     image = pathlib2.Path(imagePath);
-    imageAccessTime = datetime.datetime.fromtimestamp(image.stat().st_atime);  # need to fix - last access time for now
-    year = imageAccessTime.year
-    month = imageAccessTime.month
-    day = imageAccessTime.day
-    hour = imageAccessTime.hour
-    minute = imageAccessTime.minute
-    createdTime={}
-    createdTime["year"] = year
-    createdTime["month"] = month
-    createdTime["day"] = day
-    createdTime["hour"] = hour
-    createdTime["minute"] = minute
-    return createdTime
+    imageAccessTime = datetime.datetime.fromtimestamp(image.stat().st_atime).replace(microsecond=0);  # need to fix - last access time for now
+    #year = imageAccessTime.year
+    #month = imageAccessTime.month
+    #day = imageAccessTime.day
+    #hour = imageAccessTime.hour
+    #minute = imageAccessTime.minute
+    #createdTime={}
+    #createdTime["year"] = year
+    #createdTime["month"] = month
+    #createdTime["day"] = day
+    #createdTime["hour"] = hour
+    #createdTime["minute"] = minute
+    return str(imageAccessTime)
 
 
 
@@ -182,13 +182,12 @@ def getLocationDetails(locationid):
     crop.cropper(coordinates, image, imageURLFile, cropFolder)
 
     # metaData
-    imageMetaData = os.stat(imagePath)
-    imageCreationTime = time.ctime(imageMetaData[stat.ST_ATIME]);  # need to fix - last access time for
+    createdTime = getImageCreatedTime(imagePath);  # need to fix - last access time for
 
     # return occupance status
     output= scriptRunner(imageURLFile, predictionFile, numberOfSlots, imagePath)
     #output["imagePath"] = imagePath #have to remove this
-    output["accessedTime"] = imageCreationTime
+    output["accessedTime"] = createdTime
     jsonOutput = json.dumps(output)
     return jsonOutput
 

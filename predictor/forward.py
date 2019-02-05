@@ -127,7 +127,7 @@ class CaffeWorker(threading.Thread):
             self.q.task_done()
 
 
-def forward_all(deploy_file, caffemodel, image_list, root_folder=None, nogpu=False, mean_file=None, mean_pixel=None,
+def forward_all(deploy_file, caffemodel, image_list, root_folder=None, nogpu=True, mean_file=None, mean_pixel=None,
                 **kwargs):
     q = Queue.Queue()
 
@@ -183,7 +183,7 @@ if __name__ == '__main__':
     parser.add_argument('-mp', '--mean-pixel',
                         help='Path to a mean pixel numpy file (*.npy)')
     parser.add_argument('--nogpu',
-                        action='store_true',
+                        action='store_false',
                         help="Don't use the GPU")
     parser.add_argument('-rf', '--root-folder',
                         default='',

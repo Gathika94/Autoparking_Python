@@ -1,5 +1,4 @@
 
-print 5//2
 
 def horizontalGridLine(horizontalStart, horizontalEnd, horizontalGap, verticalStart, verticalSize, verticalInclination):
     numberOfSlots = (horizontalEnd - horizontalStart) // horizontalGap

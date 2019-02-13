@@ -26,6 +26,76 @@ deployFileLocation = "/media/gathika/MainDisk/entgra_repos/deep-parking/mAlexNet
 modelLocation = "/media/gathika/MainDisk/entgra_repos/deep-parking/mAlexNet-on-Combined_CNRParkAB_Ext_train-val-PKLot_val/snapshot_iter_6275.caffemodel"
 
 
+
+def prepareImage(url,coordinates):
+
+    coordinatesList = ast.literal_eval(coordinates)
+    numberOfSlots = len(coordinatesList);
+
+    coordinatesList = ast.literal_eval(coordinates)
+    numberOfSlots = len(coordinatesList)
+
+    # directory and file paths
+    imageURLFile = storage + str(url) + "/" + "images.txt"
+    predictionFile = storage + str(url) + "/" + "predictions.npy"
+    cropFolder = storage + str(url) + "/" + "slots"
+
+    # sorting images of a particular camera based on access time
+    startingDir = os.getcwd()
+    searchDir = storage + str(url) + "/images/"
+    os.chdir(searchDir)
+    files = filter(os.path.isfile, os.listdir(searchDir))
+    files = [os.path.join(searchDir, f) for f in files]  # add path to each file
+    files.sort(key=os.path.getatime)
+    imagePath = files[-1]
+    os.chdir(startingDir)
+
+    # crop image
+    image = cv2.imread(imagePath, 1)
+    crop.cropper(coordinates, image, imageURLFile, cropFolder)
+
+    # metaData
+    createdTime = getImageCreatedTime(imagePath);  # need to fix - last access time for
+
+    # return occupance status
+    output = scriptRunner(imageURLFile, predictionFile, numberOfSlots, imagePath)
+    occupied = output["occupied"]
+    return occupied
+
+
+def chooseBestGrid(url,horizontalStart, horizontalEnd, horizontalGap, verticalStart, verticalSize, verticalInclination):
+    selectedGrids = findSuitableGrid(horizontalStart,horizontalEnd,horizontalGap,verticalStart,verticalSize,verticalInclination)
+    numberOfGrids = len(selectedGrids)
+    maxOccupied = -1
+    currentlySelectedGrid = ""
+    for i in range(0,numberOfGrids,1):
+        internalGrid=str(selectedGrids[i])
+        occupied= prepareImage(url,internalGrid)
+        print "occupied : "+ str(occupied)
+        print "grid : " + internalGrid
+        if(occupied>maxOccupied):
+            maxOccupied = occupied
+            currentlySelectedGrid= internalGrid
+    return str(currentlySelectedGrid)
+
+
+def findSuitableGrid(horizontalStart, horizontalEnd, horizontalGap, verticalStart, verticalSize, verticalInclination):
+    horizontalWidth = horizontalEnd-horizontalStart
+    horizontalIncrement = 3
+    horizontalIncrementSteps = 5
+    verticalIncrement = 2
+    verticalIncrementSteps = 3
+    grids = []
+    for i in range(0,horizontalIncrementSteps,1):
+        newHorizontalStart=horizontalStart+i*horizontalIncrement
+        newHorizontalEnd=horizontalStart+horizontalWidth
+        for j in range(0,verticalIncrementSteps,1):
+            verticalStart = verticalStart+j*verticalIncrement
+            singleGrid = grid.horizontalGridLine(newHorizontalStart,newHorizontalEnd,horizontalGap,verticalStart,verticalSize,verticalInclination)
+            grids.append(singleGrid)
+    return grids
+
+
 # run machine learning model as a method
 def methodRunner(imagesFileLocation):
     out = forward.forward_all(
@@ -199,15 +269,16 @@ def getLocationDetails(locationid):
     jsonOutput = json.dumps(output)
     return jsonOutput
 
-@app.route('/drawGrid',methods=['GET'])
-def returnGrid():
+@app.route('/drawGrid/<locationid>',methods=['GET'])
+def returnGrid(locationid):
+    url = locationid
     horizontalStart = int(request.args.get('HS'))
     horizontalEnd = int(request.args.get('HE'))
     horizontalGap = int(request.args.get('HG'))
     verticalStart = int(request.args.get('VS'))
     verticalSize = int(request.args.get('VZ'))
     verticalInclination = int(request.args.get('VI'))
-    return grid.horizontalGridLine(horizontalStart,horizontalEnd,horizontalGap,verticalStart,verticalSize,verticalInclination)
+    return chooseBestGrid(url,horizontalStart,horizontalEnd,horizontalGap,verticalStart,verticalSize,verticalInclination)
 
 
 

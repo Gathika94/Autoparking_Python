@@ -13,6 +13,10 @@ import stat
 import time
 import datetime
 import pathlib2
+from shutil import copyfile
+from shutil import copy2
+import ntpath
+import grid
 
 app = Flask(__name__)
 api = Api(app)
@@ -112,6 +116,10 @@ def index():
     # sorting images of a particular camera based on access time
     startingDir = os.getcwd()
     searchDir = storage + str(url) + "/images/"
+
+
+
+
     os.chdir(searchDir)
     files = filter(os.path.isfile, os.listdir(searchDir))
     files = [os.path.join(searchDir, f) for f in files]  # add path to each file
@@ -191,6 +199,15 @@ def getLocationDetails(locationid):
     jsonOutput = json.dumps(output)
     return jsonOutput
 
+@app.route('/drawGrid',methods=['GET'])
+def returnGrid():
+    horizontalStart = int(request.args.get('HS'))
+    horizontalEnd = int(request.args.get('HE'))
+    horizontalGap = int(request.args.get('HG'))
+    verticalStart = int(request.args.get('VS'))
+    verticalSize = int(request.args.get('VZ'))
+    verticalInclination = int(request.args.get('VI'))
+    return grid.horizontalGridLine(horizontalStart,horizontalEnd,horizontalGap,verticalStart,verticalSize,verticalInclination)
 
 
 

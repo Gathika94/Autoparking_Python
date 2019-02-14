@@ -5,3 +5,5 @@
 /media/gathika/MainDisk/entgra_repos/asas/autoparking/images/5/slots/slot5.png
 /media/gathika/MainDisk/entgra_repos/asas/autoparking/images/5/slots/slot6.png
 /media/gathika/MainDisk/entgra_repos/asas/autoparking/images/5/slots/slot7.png
+/media/gathika/MainDisk/entgra_repos/asas/autoparking/images/5/slots/slot8.png
+/media/gathika/MainDisk/entgra_repos/asas/autoparking/images/5/slots/slot9.png

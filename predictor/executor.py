@@ -29,8 +29,6 @@ modelLocation = "/media/gathika/MainDisk/entgra_repos/deep-parking/mAlexNet-on-C
 
 def prepareImage(url,coordinates):
 
-    coordinatesList = ast.literal_eval(coordinates)
-    numberOfSlots = len(coordinatesList);
 
     coordinatesList = ast.literal_eval(coordinates)
     numberOfSlots = len(coordinatesList)
@@ -58,6 +56,7 @@ def prepareImage(url,coordinates):
     createdTime = getImageCreatedTime(imagePath);  # need to fix - last access time for
 
     # return occupance status
+    print "number of slots :"+str(numberOfSlots)
     output = scriptRunner(imageURLFile, predictionFile, numberOfSlots, imagePath)
     occupied = output["occupied"]
     return occupied
@@ -84,14 +83,14 @@ def findSuitableGrid(horizontalStart, horizontalEnd, horizontalGap, verticalStar
     horizontalIncrement = 3
     horizontalIncrementSteps = 5
     verticalIncrement = 2
-    verticalIncrementSteps = 3
+    verticalIncrementSteps = 2
     grids = []
     for i in range(0,horizontalIncrementSteps,1):
         newHorizontalStart=horizontalStart+i*horizontalIncrement
         newHorizontalEnd=horizontalStart+horizontalWidth
         for j in range(0,verticalIncrementSteps,1):
-            verticalStart = verticalStart+j*verticalIncrement
-            singleGrid = grid.horizontalGridLine(newHorizontalStart,newHorizontalEnd,horizontalGap,verticalStart,verticalSize,verticalInclination)
+            newVerticalStart = verticalStart+j*verticalIncrement
+            singleGrid = grid.horizontalGridLine(newHorizontalStart,newHorizontalEnd,horizontalGap,newVerticalStart,verticalSize,verticalInclination)
             grids.append(singleGrid)
     return grids
 
@@ -132,7 +131,7 @@ def scriptRunner(imagesFileLocation, predictionFileLocation, numberOfSlots, imag
 
     for x in range(0, numberOfSlots, 1):
         availability = (newArray[x, 0])
-        if (availability < 4.0 * (10 ** (-24))):
+        if (availability < 1.0 * (10 ** (-6))):
             print ("slot" + str(x + 1) + ": " + str(0))
            # output["slot" + str(x + 1)] = 0
             slots["slot" + str(x + 1)] = 0

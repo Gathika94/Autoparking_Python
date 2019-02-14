@@ -62,8 +62,12 @@ def prepareImage(url,coordinates):
     return occupied
 
 
-def chooseBestGrid(url,horizontalStart, horizontalEnd, horizontalGap, verticalStart, verticalSize, verticalInclination):
-    selectedGrids = findSuitableGrid(horizontalStart,horizontalEnd,horizontalGap,verticalStart,verticalSize,verticalInclination)
+def chooseBestGrid(url,horizontalStart, horizontalEnd, horizontalGap, verticalStart, verticalSize, verticalInclination,
+                   horizontalIncrement,horizontalIncrementSteps,verticalIncrement,verticalIncrementSteps):
+
+    selectedGrids = findSuitableGrid(horizontalStart,horizontalEnd,horizontalGap,verticalStart,verticalSize,
+                                     verticalInclination,horizontalIncrement, horizontalIncrementSteps,
+                                     verticalIncrement, verticalIncrementSteps)
     numberOfGrids = len(selectedGrids)
     maxOccupied = -1
     currentlySelectedGrid = ""
@@ -78,12 +82,13 @@ def chooseBestGrid(url,horizontalStart, horizontalEnd, horizontalGap, verticalSt
     return str(currentlySelectedGrid)
 
 
-def findSuitableGrid(horizontalStart, horizontalEnd, horizontalGap, verticalStart, verticalSize, verticalInclination):
+def findSuitableGrid(horizontalStart, horizontalEnd, horizontalGap, verticalStart, verticalSize, verticalInclination,
+                     horizontalIncrement, horizontalIncrementSteps, verticalIncrement, verticalIncrementSteps):
     horizontalWidth = horizontalEnd-horizontalStart
-    horizontalIncrement = 3
-    horizontalIncrementSteps = 5
-    verticalIncrement = 2
-    verticalIncrementSteps = 2
+    horizontalIncrement = horizontalIncrement
+    horizontalIncrementSteps = horizontalIncrementSteps
+    verticalIncrement = verticalIncrement
+    verticalIncrementSteps = verticalIncrementSteps
     grids = []
     for i in range(0,horizontalIncrementSteps,1):
         newHorizontalStart=horizontalStart+i*horizontalIncrement
@@ -131,7 +136,7 @@ def scriptRunner(imagesFileLocation, predictionFileLocation, numberOfSlots, imag
 
     for x in range(0, numberOfSlots, 1):
         availability = (newArray[x, 0])
-        if (availability < 1.0 * (10 ** (-6))):
+        if (availability < 1.0 * (10 ** (-25))):
             print ("slot" + str(x + 1) + ": " + str(0))
            # output["slot" + str(x + 1)] = 0
             slots["slot" + str(x + 1)] = 0
@@ -277,7 +282,12 @@ def returnGrid(locationid):
     verticalStart = int(request.args.get('VS'))
     verticalSize = int(request.args.get('VZ'))
     verticalInclination = int(request.args.get('VI'))
-    return chooseBestGrid(url,horizontalStart,horizontalEnd,horizontalGap,verticalStart,verticalSize,verticalInclination)
+    horizontalIncrement = int(request.args.get('HGI'))
+    horizontalIncrementSteps = int(request.args.get('HGIS'))
+    verticalIncrement = int(request.args.get('VGI'))
+    verticalIncrementSteps = int(request.args.get('VGIS'))
+    return chooseBestGrid(url,horizontalStart,horizontalEnd,horizontalGap,verticalStart,verticalSize,verticalInclination,
+                          horizontalIncrement,horizontalIncrementSteps,verticalIncrement,verticalIncrementSteps)
 
 
 

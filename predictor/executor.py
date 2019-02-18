@@ -114,7 +114,7 @@ def methodRunner(imagesFileLocation):
 
     for x in range(0, 23, 1):
         availability = (newArray[x, 0])
-        if (availability < 1.0 * (10 ** (-25))):
+        if (availability < 1.0 * (10 ** (-15))):
             print ("slot" + str(x + 1) + ": " + str(0))
             output[0]["slot" + str(x + 1)] = 0
         else:
@@ -136,7 +136,7 @@ def scriptRunner(imagesFileLocation, predictionFileLocation, numberOfSlots, imag
 
     for x in range(0, numberOfSlots, 1):
         availability = (newArray[x, 0])
-        if (availability < 1.0 * (10 ** (-25))):
+        if (availability < 1.0 * (10 ** (-15))):
             print ("slot" + str(x + 1) + ": " + str(0))
            # output["slot" + str(x + 1)] = 0
             slots["slot" + str(x + 1)] = 0
@@ -145,6 +145,37 @@ def scriptRunner(imagesFileLocation, predictionFileLocation, numberOfSlots, imag
         else:
             print ("slot" + str(x + 1) + ": " + str(1))
             #output["slot" + str(x + 1)] = 1
+            slots["slot" + str(x + 1)] = 1
+            print ("availability : " + str(availability))
+            available = available + 1
+
+    output["available"] = available
+    output["occupied"] = occupied
+    output["slots"] = slots
+    output["image"] = image_as_text
+    return output
+
+def scriptRunnerWithThreshold(imagesFileLocation, predictionFileLocation, numberOfSlots, image_as_text, threshold):
+    cmd = 'python forward.py' + ' ' + deployFileLocation + ' ' + modelLocation + ' ' + imagesFileLocation + ' ' + \
+          predictionFileLocation
+    os.system(cmd)
+    newArray = np.load(predictionFileLocation)
+    output = {}
+    slots = {}
+    available = 0
+    occupied = 0
+
+    for x in range(0, numberOfSlots, 1):
+        availability = (newArray[x, 0])
+        if (availability < threshold):
+            print ("slot" + str(x + 1) + ": " + str(0))
+            # output["slot" + str(x + 1)] = 0
+            slots["slot" + str(x + 1)] = 0
+            print ("availability : " + str(availability))
+            occupied = occupied + 1
+        else:
+            print ("slot" + str(x + 1) + ": " + str(1))
+            # output["slot" + str(x + 1)] = 1
             slots["slot" + str(x + 1)] = 1
             print ("availability : " + str(availability))
             available = available + 1

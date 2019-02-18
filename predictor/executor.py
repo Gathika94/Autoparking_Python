@@ -27,7 +27,7 @@ modelLocation = "/media/gathika/MainDisk/entgra_repos/deep-parking/mAlexNet-on-C
 
 
 
-def prepareImage(url,coordinates):
+def checkOccupancy(url, coordinates, gridThreshold):
 
 
     coordinatesList = ast.literal_eval(coordinates)
@@ -57,13 +57,13 @@ def prepareImage(url,coordinates):
 
     # return occupance status
     print "number of slots :"+str(numberOfSlots)
-    output = scriptRunner(imageURLFile, predictionFile, numberOfSlots, imagePath)
+    output = scriptRunnerWithThreshold(imageURLFile, predictionFile, numberOfSlots, imagePath,gridThreshold)
     occupied = output["occupied"]
     return occupied
 
 
 def chooseBestGrid(url,horizontalStart, horizontalEnd, horizontalGap, verticalStart, verticalSize, verticalInclination,
-                   horizontalIncrement,horizontalIncrementSteps,verticalIncrement,verticalIncrementSteps):
+                   horizontalIncrement,horizontalIncrementSteps,verticalIncrement,verticalIncrementSteps,gridThreshold):
 
     selectedGrids = findSuitableGrid(horizontalStart,horizontalEnd,horizontalGap,verticalStart,verticalSize,
                                      verticalInclination,horizontalIncrement, horizontalIncrementSteps,
@@ -73,7 +73,7 @@ def chooseBestGrid(url,horizontalStart, horizontalEnd, horizontalGap, verticalSt
     currentlySelectedGrid = ""
     for i in range(0,numberOfGrids,1):
         internalGrid=str(selectedGrids[i])
-        occupied= prepareImage(url,internalGrid)
+        occupied= checkOccupancy(url, internalGrid, gridThreshold)
         print "occupied : "+ str(occupied)
         print "grid : " + internalGrid
         if(occupied>maxOccupied):
@@ -317,8 +317,11 @@ def returnGrid(locationid):
     horizontalIncrementSteps = int(request.args.get('HGIS'))
     verticalIncrement = int(request.args.get('VGI'))
     verticalIncrementSteps = int(request.args.get('VGIS'))
+    gridThresholdValue = float(request.args.get("GTV"))
+    gridThresholdPower = int(request.args.get("GTP"))
+    gridThreshold = gridThresholdValue*(10**gridThresholdPower)
     return chooseBestGrid(url,horizontalStart,horizontalEnd,horizontalGap,verticalStart,verticalSize,verticalInclination,
-                          horizontalIncrement,horizontalIncrementSteps,verticalIncrement,verticalIncrementSteps)
+                          horizontalIncrement,horizontalIncrementSteps,verticalIncrement,verticalIncrementSteps,gridThreshold)
 
 
 

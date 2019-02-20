@@ -320,9 +320,13 @@ def returnGrid(locationid):
     gridThresholdValue = float(request.args.get("GTV"))
     gridThresholdPower = int(request.args.get("GTP"))
     gridThreshold = gridThresholdValue*(10**gridThresholdPower)
-    return chooseBestGrid(url,horizontalStart,horizontalEnd,horizontalGap,verticalStart,verticalSize,verticalInclination,
+    bestGrid = chooseBestGrid(url,horizontalStart,horizontalEnd,horizontalGap,verticalStart,verticalSize,verticalInclination,
                           horizontalIncrement,horizontalIncrementSteps,verticalIncrement,verticalIncrementSteps,gridThreshold)
-
+    print "selectedGrid"+bestGrid
+    output={}
+    output["grid"]=bestGrid
+    jsonOutput = json.dumps(output)
+    return jsonOutput
 
 
 @app.route('/grid/<gridid>',methods=['GET'])

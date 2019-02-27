@@ -3,6 +3,15 @@
   <component name="ChangeListManager">
     <list default="true" id="d663afa6-afcd-42e5-ab50-3203141747d6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/6/predictions.npy" beforeDir="false" afterPath="$PROJECT_DIR$/images/6/predictions.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/6/slots/slot1.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/6/slots/slot1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/6/slots/slot2.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/6/slots/slot2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/6/slots/slot3.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/6/slots/slot3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/6/slots/slot4.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/6/slots/slot4.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/6/slots/slot5.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/6/slots/slot5.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/6/slots/slot6.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/6/slots/slot6.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/6/slots/slot7.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/6/slots/slot7.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/6/slots/slot8.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/6/slots/slot8.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/images/7/predictions.npy" beforeDir="false" afterPath="$PROJECT_DIR$/images/7/predictions.npy" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/images/7/slots/slot1.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/7/slots/slot1.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/images/7/slots/slot10.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/7/slots/slot10.png" afterDir="false" />
@@ -14,7 +23,9 @@
       <change beforePath="$PROJECT_DIR$/images/7/slots/slot7.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/7/slots/slot7.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/images/7/slots/slot8.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/7/slots/slot8.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/images/7/slots/slot9.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/7/slots/slot9.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/7/snap30.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/predictor/executor.py" beforeDir="false" afterPath="$PROJECT_DIR$/predictor/executor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/predictor/resized.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/predictor/resized.jpg" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,7 +38,7 @@
     <SUITE FILE_PATH="coverage/AutoParking$Crop.coverage" NAME="Crop Coverage Results" MODIFIED="1546597305660" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/project52$Crop.coverage" NAME="Crop Coverage Results" MODIFIED="1546582726676" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/project52$numpyreader.coverage" NAME="numpyreader Coverage Results" MODIFIED="1546583849640" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/autoparking$executor.coverage" NAME="executor Coverage Results" MODIFIED="1550478760247" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/predictor" />
+    <SUITE FILE_PATH="coverage/autoparking$executor.coverage" NAME="executor Coverage Results" MODIFIED="1551225668486" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/predictor" />
     <SUITE FILE_PATH="coverage/AutoParking$executor.coverage" NAME="executor Coverage Results" MODIFIED="1546837257055" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/predictor" />
     <SUITE FILE_PATH="coverage/autoparking$Crop.coverage" NAME="Crop Coverage Results" MODIFIED="1547116877662" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
@@ -47,11 +58,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/predictor/executor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="542">
-              <caret line="332" column="27" lean-forward="true" selection-start-line="332" selection-start-column="27" selection-end-line="332" selection-end-column="27" />
+            <state relative-caret-position="338">
+              <caret line="389" column="4" selection-start-line="389" selection-start-column="4" selection-end-line="389" selection-end-column="4" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -60,40 +71,18 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/predictor/grid.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="23" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
-            </state>
-          </provider>
+        <entry file="file://$USER_HOME$/anaconda2/lib/python2.7/json/__init__.py">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/images/4/changeImage.py">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/predictor/drawGrid.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="24" selection-start-line="24" selection-end-line="24" />
+            <state relative-caret-position="105">
+              <caret line="19" column="40" lean-forward="true" selection-start-line="19" selection-start-column="40" selection-end-line="19" selection-end-column="40" />
               <folding>
-                <element signature="e#0#27#0" expanded="true" />
+                <element signature="e#0#13#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/anaconda2/lib/python2.7/json/encoder.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4035">
-              <caret line="269" selection-start-line="269" selection-end-line="269" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/anaconda2/lib/python2.7/base64.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="750">
-              <caret line="53" selection-start-line="53" selection-end-line="53" />
             </state>
           </provider>
         </entry>
@@ -101,32 +90,13 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/predictor/crop.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="26" column="24" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="24" />
+            <state relative-caret-position="450">
+              <caret line="30" selection-start-line="30" selection-end-line="30" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
             </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/predictor/forward.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2595">
-              <caret line="186" column="49" selection-start-line="186" selection-start-column="49" selection-end-line="186" selection-end-column="49" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/predictor/images.txt">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Empty Document">
-          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -157,14 +127,16 @@
         <option value="$PROJECT_DIR$/predictor/forward.py" />
         <option value="$PROJECT_DIR$/images/4/changeImage.py" />
         <option value="$PROJECT_DIR$/predictor/grid.py" />
+        <option value="$PROJECT_DIR$/predictor/ml_model/drawGrid.py" />
         <option value="$PROJECT_DIR$/predictor/executor.py" />
+        <option value="$PROJECT_DIR$/predictor/drawGrid.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="129" />
-    <option name="y" value="72" />
-    <option name="width" value="1370" />
+    <option name="x" value="-16" />
+    <option name="y" value="286" />
+    <option name="width" value="1350" />
     <option name="height" value="1000" />
   </component>
   <component name="ProjectView">
@@ -172,7 +144,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -185,10 +156,17 @@
               <item name="autoparking" type="462c0819:PsiDirectoryNode" />
               <item name="predictor" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="autoparking" type="b2602c69:ProjectViewProjectNode" />
+              <item name="autoparking" type="462c0819:PsiDirectoryNode" />
+              <item name="predictor" type="462c0819:PsiDirectoryNode" />
+              <item name="ml_model" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -341,21 +319,26 @@
       <workItem from="1550571273507" duration="1105000" />
       <workItem from="1550579251684" duration="650000" />
       <workItem from="1550580065982" duration="602000" />
+      <workItem from="1550634998465" duration="3492000" />
+      <workItem from="1550803654376" duration="6903000" />
+      <workItem from="1550816031429" duration="869000" />
+      <workItem from="1551168791636" duration="15572000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="202887000" />
+    <option name="totallyTimeSpent" value="229823000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1931378" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20199226" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32937366" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4997233" weight="0.5863931" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4997233" visible="true" weight="0.70086396" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3898488" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -364,7 +347,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5002767" side_tool="true" weight="0.26241902" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.4997233" visible="true" weight="0.06695464" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.4997233" weight="0.12311015" />
       <window_info anchor="bottom" id="Python Console" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -389,16 +372,6 @@
     <entry file="file://$PROJECT_DIR$/park_cropped.png" />
     <entry file="file://$PROJECT_DIR$/park_cropped2.png" />
     <entry file="file://$PROJECT_DIR$/numpyreader.py" />
-    <entry file="file://$PROJECT_DIR$/predictor/executor.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="542">
-          <caret line="332" column="27" lean-forward="true" selection-start-line="332" selection-start-column="27" selection-end-line="332" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/predictor/grid.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
@@ -430,16 +403,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/predictor/crop.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="26" column="24" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/predictor/forward.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2595">
@@ -452,6 +415,40 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Empty Document">
       <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/predictor/ml_model/drawGrid.py" />
+    <entry file="file://$PROJECT_DIR$/predictor/crop.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="30" selection-start-line="30" selection-end-line="30" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda2/lib/python2.7/json/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/predictor/executor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="338">
+          <caret line="389" column="4" selection-start-line="389" selection-start-column="4" selection-end-line="389" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/predictor/drawGrid.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="19" column="40" lean-forward="true" selection-start-line="19" selection-start-column="40" selection-end-line="19" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
     </entry>
   </component>
 </project>

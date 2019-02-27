@@ -10,27 +10,37 @@ import ast
 #                  "[280, 310, 870, 930]]"
 
 sourceDirectory = "/media/gathika/MainDisk/entgra_repos/asas/autoparking/testing_images/";
-def drawGridLine(imagePath,gridCoordinates):
+def drawGridLine(imagePath,gridCoordinates,availabilityString):
     img = cv2.imread(imagePath, 1)
     gridLineList = ast.literal_eval(gridCoordinates)
+    print availabilityString
+    availabilityList = ast.literal_eval(availabilityString)
     numberOfGrids=len(gridLineList)
+    print "numberOfGrids"+str(numberOfGrids)
     print gridLineList
     for j in range(0,numberOfGrids,1):
-        print gridLineList[j]
+       # print gridLineList[j]
         coordinatesList= gridLineList[j]
+        lineAvailability = availabilityList[j]
         numberOfSlots = len(coordinatesList)
-        needToWrite = False
         output={}
         for i in range(0, numberOfSlots, 1):
+            print "lineAvail"+str(lineAvailability[i])
             slotMargins = (coordinatesList[i])
             y1 = slotMargins[0]
             y2 = slotMargins[1]
             x1 = slotMargins[2]
             x2 = slotMargins[3]
-            cv2.line(img, (x1, y1), (x2, y1), (255, 0, 0), 2, 1)
-            cv2.line(img, (x1, y2), (x2, y2), (255, 0, 0), 2, 1)
-            cv2.line(img, (x1, y1), (x1, y2), (255, 0, 0), 2, 1)
-            cv2.line(img, (x2, y1), (x2, y2), (255, 0, 0), 2, 1)
+            if(lineAvailability[i]==1):
+                cv2.line(img, (x1, y1), (x2, y1), (0, 255, 0), 2, 1)
+                cv2.line(img, (x1, y2), (x2, y2), (0, 255, 0), 2, 1)
+                cv2.line(img, (x1, y1), (x1, y2), (0, 255, 0), 2, 1)
+                cv2.line(img, (x2, y1), (x2, y2), (0, 255, 0), 2, 1)
+            else:
+                cv2.line(img, (x1, y1), (x2, y1), (0, 0, 255), 2, 1)
+                cv2.line(img, (x1, y2), (x2, y2), (0, 0, 255), 2, 1)
+                cv2.line(img, (x1, y1), (x1, y2), (0, 0, 255), 2, 1)
+                cv2.line(img, (x2, y1), (x2, y2), (0, 0, 255), 2, 1)
     newImagePath = sourceDirectory+"newSnap.jpg"
     cv2.imwrite(newImagePath, img)
     newImage=cv2.imread(newImagePath,1)

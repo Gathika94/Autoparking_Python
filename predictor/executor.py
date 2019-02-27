@@ -381,13 +381,14 @@ def getImageWithGrid():
     # extract data from api parameters
     grid = request.form['grid']
     imagePath=request.form.get('imagePath', 'default value')
+    availabilityList= request.form.get('availability', 'default value')
     print grid
     print imagePath
     #output={}
     #output["image"]=imagePath
     #jsonOutput = json.dumps(output)
     #return jsonOutput
-    return drawGrid.drawGridLine(imagePath,grid)
+    return drawGrid.drawGridLine(imagePath,grid,availabilityList)
 
 
 

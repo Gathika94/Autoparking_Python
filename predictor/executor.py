@@ -9,13 +9,8 @@ import json
 import os
 import cv2
 import ast
-import stat
-import time
 import datetime
 import pathlib2
-from shutil import copyfile
-from shutil import copy2
-import ntpath
 import grid
 import drawGrid
 

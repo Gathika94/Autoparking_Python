@@ -44,9 +44,9 @@ def drawGridLine(imagePath,gridCoordinates,availabilityString):
     newImagePath = sourceDirectory+"newSnap.jpg"
     cv2.imwrite(newImagePath, img)
     newImage=cv2.imread(newImagePath,1)
-    resizedImage = cv2.resize(newImage, (1000, 600))
-    cv2.imwrite("resized.jpg", resizedImage)
-    retval, buffer = cv2.imencode('.jpg', resizedImage)
+    #resizedImage = cv2.resize(newImage, (1200, 675))
+    #cv2.imwrite("resized.jpg", resizedImage)
+    retval, buffer = cv2.imencode('.jpg', newImage)
     print buffer
     image_as_text = base64.b64encode(buffer)
     output["image"] = image_as_text

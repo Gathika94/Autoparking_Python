@@ -11,9 +11,9 @@ def cropper(coordinates, image, imageURLFilePath, cropFolder):
     slots = len(coordinatesList);
     needToWrite = False
 
-    if not (os.path.exists(imageURLFilePath)):
-        imageURLFile = open(imageURLFilePath, "w+")
-        needToWrite=True
+    #if not (os.path.exists(imageURLFilePath)):
+    imageURLFile = open(imageURLFilePath, "w")
+    #needToWrite=True
 
     for i in range(0,slots,1):
         slotMargins = (coordinatesList[i])
@@ -24,7 +24,6 @@ def cropper(coordinates, image, imageURLFilePath, cropFolder):
         croppedImg = image[x1:x2,y1:y2]
         filePath = cropFolder+"/"+"slot"+str(i+1)+"."+"png"
         cv2.imwrite(str(filePath),croppedImg)
-        if(needToWrite):
-            imageURLFile.write(filePath+"\n")
+        imageURLFile.write(filePath+"\n")
 
 

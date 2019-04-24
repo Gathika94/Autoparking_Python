@@ -13,6 +13,7 @@ import datetime
 import pathlib2
 import grid
 import drawGrid
+import logging
 
 app = Flask(__name__)
 api = Api(app)
@@ -21,6 +22,8 @@ storage = "/media/gathika/MainDisk/entgra_repos/asas/autoparking/images/"
 deployFileLocation = "/media/gathika/MainDisk/entgra_repos/deep-parking/mAlexNet-on-Combined_CNRParkAB_Ext_train-val-PKLot_val/deploy.prototxt"
 modelLocation = "/media/gathika/MainDisk/entgra_repos/deep-parking/mAlexNet-on-Combined_CNRParkAB_Ext_train-val-PKLot_val/snapshot_iter_6275.caffemodel"
 
+
+logging.basicConfig(level=logging.DEBUG, filename="file.log", format='%(asctime)s - %(message)s')
 
 def checkOccupancy(url, coordinates, gridThreshold):
     coordinatesList = ast.literal_eval(coordinates)
@@ -331,6 +334,7 @@ def returnGrid(locationid):
 
 @app.route('/grid/<gridid>', methods=['GET'])
 def getGridDetails(gridid):
+    logging.debug("grid details requested 2");
     # extract data from api parameters
     url = gridid
     coordinates = request.args.get('grid')
@@ -368,6 +372,7 @@ def getGridDetails(gridid):
     # output["imagePath"] = imagePath #have to remove this
     output["accessedTime"] = createdTime
     jsonOutput = json.dumps(output)
+
     return jsonOutput
 
 
@@ -375,16 +380,29 @@ def getGridDetails(gridid):
 def getImageWithGrid():
     # extract data from api parameters
     grid = request.form['grid']
-    imagePath=request.form.get('imagePath', 'default value')
+    imageFolder=request.form.get('imagePath', 'default value')
     availabilityList= request.form.get('availability', 'default value')
+    sourceDirectory=storage + str(imageFolder) + "/images/"
+    imagePath=sourceDirectory+"snap.jpg"
     print grid
     print imagePath
     #output={}
     #output["image"]=imagePath
     #jsonOutput = json.dumps(output)
     #return jsonOutput
-    return drawGrid.drawGridLine(imagePath,grid,availabilityList)
+    return drawGrid.drawGridLine(imagePath,grid,availabilityList,sourceDirectory)
 
+@app.route('/createImage', methods=['POST'])
+def createNewImage():
+    # extract data from api parameters
+    camId = request.form['camId']
+    startingDir = os.getcwd()
+    sourceDirectory=storage + str(camId) + "/images/"
+    os.chdir(sourceDirectory)
+    print "Hello World"
+    print sourceDirectory
+    os.chdir(startingDir)
+    return json.dumps({'success': True}), 200, {'ContentType': 'application/json'}
 
 
 if __name__ == '__main__':

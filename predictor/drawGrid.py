@@ -9,8 +9,8 @@ import ast
 #                  "[268, 298, 630, 690], [271, 301, 690, 750], [274, 304, 750, 810], [277, 307, 810, 870], " \
 #                  "[280, 310, 870, 930]]"
 
-sourceDirectory = "/media/gathika/MainDisk/entgra_repos/asas/autoparking/testing_images/";
-def drawGridLine(imagePath,gridCoordinates,availabilityString):
+#sourceDirectory = "/media/gathika/MainDisk/entgra_repos/asas/autoparking/testing_images/";
+def drawGridLine(imagePath,gridCoordinates,availabilityString,sourceDirectory):
     img = cv2.imread(imagePath, 1)
     gridLineList = ast.literal_eval(gridCoordinates)
     print availabilityString
